@@ -1,0 +1,21 @@
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/
+
+# AWS Key (절대 조심)
+*.pem
+*.csv
+.credentials
+
+# Terraform (Project 2용)
+.terraform
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# Environment Variables
+.env
+
+# Logs
+*.log
