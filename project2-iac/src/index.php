@@ -1,7 +1,7 @@
 <?php
 $servername = "my-project-db.cte8mywykw00.ap-northeast-2.rds.amazonaws.com";
 $username = "admin";
-$password = "mypassword1234";
+$password = "*********";
 $dbname = "mydb";
 
 // DB 접속 시도 (지금은 실패하는 게 정상)

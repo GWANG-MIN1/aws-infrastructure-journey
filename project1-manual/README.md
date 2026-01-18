@@ -2,9 +2,6 @@
 
 AWS 콘솔과 리눅스 터미널만을 사용하여 3-Tier 아키텍처를 직접 구축하는 과정을 기록합니다.
 
-<p align="center">
-  <img src="./diagrams/project1-architecture.png" align="center" width="80%">
-</p>
 
 ## 📅 2026.01.16 (금) - 네트워크 기초 공사 완료
 
@@ -44,22 +41,3 @@ AWS 콘솔과 리눅스 터미널만을 사용하여 3-Tier 아키텍처를 직�
 ### 2. 배운 점 (Key Takeaways)
 - **보안 그룹 체이닝(Chaining):** IP 주소가 아니라 **"보안 그룹 ID"**를 소스로 지정하면, 해당 그룹에 속한 서버들만 안전하게 접속을 허용할 수 있다는 것을 배움.
 - **RDS와 Subnet:** DB는 외부에서 직접 접근할 수 없도록 반드시 **Private Subnet**에 배치해야 함.
-
----
-## 📅 2026.01.18 (일) - 프로젝트 완수 (Mission Complete)
-
-### 1. 주요 작업 (Final Integration)
-- **웹 어플리케이션 배포:**
-  - `Apache(httpd)` 웹 서버 및 `PHP` 설치.
-  - `php-mysqlnd` 라이브러리를 통해 EC2와 RDS 간 통신 환경 구축.
-- **최종 연동 테스트:**
-  - `mysqli` 객체를 사용하여 RDS 엔드포인트로 접속 시도.
-  - 웹 브라우저를 통해 **"Connected to: mydb"** 성공 메시지 확인.
-
-### 🏆 프로젝트 회고 (Retrospective)
-- **성과:** AWS 마법사 없이 VPC, Subnet, Route Table, IGW, EC2, RDS, Security Group 등 모든 리소스를 **수동으로 직접 설계하고 구축**함.
-- **배운 점:**
-  - **3-Tier Architecture:** 보안을 위해 DB를 Private Subnet에 숨기고, 오직 웹 서버를 통해서만 접근하게 하는 구조를 완벽히 이해함.
-  - **Troubleshooting:** 라우팅 테이블 설정 실수, 보안 그룹 연결 등 다양한 문제를 직접 해결하며 디버깅 능력을 키움.
-    <img width="692" height="432" alt="스크린샷 2026-01-18 144029" src="https://github.com/user-attachments/assets/82351091-0972-4c08-ba7c-49b9a76011f2" />
-
