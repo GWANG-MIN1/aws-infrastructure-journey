@@ -2,6 +2,9 @@
 
 AWS 콘솔과 리눅스 터미널만을 사용하여 3-Tier 아키텍처를 직접 구축하는 과정을 기록합니다.
 
+<img width="1876" height="3809" alt="project1-architecture" src="https://github.com/user-attachments/assets/30102642-db94-42c3-a72b-ae2066c9686a" />
+
+
 
 ## 📅 2026.01.16 (금) - 네트워크 기초 공사 완료
 
