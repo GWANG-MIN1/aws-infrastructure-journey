@@ -31,9 +31,9 @@
 ### 3. 트러블 슈팅 (Troubleshooting)
 
 #### 📛 이슈 1: Docker 이미지 네이밍 규칙 위반
-* **문제:** `Docker build` 시 대문자가 포함된 아이디(`GWANG-MIN1`)를 사용하여 빌드 실패.
+* **문제:** `Docker build` 시 대문자가 포함된 아이디(`GWANGMON`)를 사용하여 빌드 실패.
 * **원인:** Docker Registry는 이미지 태그에 **소문자**만 허용함.
-* **해결:** Terraform 코드와 Docker 명령어의 아이디를 모두 소문자(`gwang-min1`)로 통일하여 해결.
+* **해결:** Terraform 코드와 Docker 명령어의 아이디를 모두 소문자(`gwangmon`)로 통일하여 해결.
 
 #### ⏳ 이슈 2: 배포 직후 502/503 에러
 * **문제:** 배포가 완료되었다고 떴는데 브라우저에서는 `503 Service Unavailable` 발생.
@@ -59,3 +59,4 @@
 | **Compute** | **AWS EC2 (Auto Scaling)** | 트래픽에 따라 늘어나고 줄어드는 서버 그룹 |
 | **Traffic** | **AWS ALB** | 부하 분산 및 헬스 체크(Health Check) |
 | **Container** | **Docker** | 애플리케이션 실행 환경 표준화 |
+
