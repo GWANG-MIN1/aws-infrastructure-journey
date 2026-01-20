@@ -4,6 +4,9 @@
 
 ---
 
+<img width="6304" height="5080" alt="GitHub Docker CI_CD Pipeline-2026-01-20-135844" src="https://github.com/user-attachments/assets/ebe23d5a-f73f-4d92-8217-560ebfdf1b2d" />
+
+
 ## 📅 2026.01.20 (화) - Auto Scaling & GitHub Actions 구축
 
 ### 1. 아키텍처 변화 (Architecture Evolution)
@@ -50,6 +53,11 @@
 
 ---
 
+<img width="545" height="377" alt="스크린샷 2026-01-20 224522" src="https://github.com/user-attachments/assets/e081fcf0-5687-42d1-9dea-6d80ceebf71d" />
+
+<img width="1412" height="93" alt="스크린샷 2026-01-20 225335" src="https://github.com/user-attachments/assets/55d6244c-af4d-4760-aad5-ab67a7b8296d" />
+
+
 ## 🛠️ Tech Stack Integration
 
 | Component | Technology | Role |
@@ -59,4 +67,5 @@
 | **Compute** | **AWS EC2 (Auto Scaling)** | 트래픽에 따라 늘어나고 줄어드는 서버 그룹 |
 | **Traffic** | **AWS ALB** | 부하 분산 및 헬스 체크(Health Check) |
 | **Container** | **Docker** | 애플리케이션 실행 환경 표준화 |
+
 
