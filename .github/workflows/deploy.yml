@@ -3,7 +3,9 @@ name: Deploy to AWS
 on:
   push:
     branches: [ "main" ]  # main 브랜치에 코드가 올라오면 발동!
-
+    paths-ignore:           
+      - 'README.md'         # README.md 파일이 바뀌면 무시
+      - 'docs/**'           # docs 폴더 안의 파일들도 무시
 jobs:
   deploy:
     runs-on: ubuntu-latest
