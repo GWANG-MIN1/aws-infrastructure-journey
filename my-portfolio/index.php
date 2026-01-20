@@ -14,7 +14,7 @@
         <p>이 페이지는 <strong>AWS 클라우드</strong>에서 실행되고 있습니다.</p>
         <p>현재 시간: <?php echo date("Y-m-d H:i:s"); ?></p>
         <hr>
-        <p>Made by <strong>Gwangmin</strong></p>
+        <p>Made by Auto <strong>CI/CD</strong></p>
     </div>
 </body>
 </html>
