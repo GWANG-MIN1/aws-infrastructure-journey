@@ -44,3 +44,6 @@ AWS 콘솔과 리눅스 터미널만을 사용하여 3-Tier 아키텍처를 직�
 ### 2. 배운 점 (Key Takeaways)
 - **보안 그룹 체이닝(Chaining):** IP 주소가 아니라 **"보안 그룹 ID"**를 소스로 지정하면, 해당 그룹에 속한 서버들만 안전하게 접속을 허용할 수 있다는 것을 배움.
 - **RDS와 Subnet:** DB는 외부에서 직접 접근할 수 없도록 반드시 **Private Subnet**에 배치해야 함.
+
+<img width="692" height="432" alt="스크린샷 2026-01-18 144029" src="https://github.com/user-attachments/assets/d45545d8-6f4b-4002-b1dd-f4d2e00688c1" />
+
