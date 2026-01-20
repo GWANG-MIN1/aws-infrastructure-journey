@@ -112,7 +112,7 @@ resource "aws_security_group" "instance_sg" {
   }
 }
 
-# 8. 시작 템플릿 (Launch Template) - "서버 붕어빵 틀"
+# 8. 시작 템플릿 (Launch Template) 
 # Auto Scaling이 이 설정을 보고 서버를 계속 찍어냅니다.
 data "aws_ami" "latest_amazon_linux" {
   most_recent = true
@@ -133,7 +133,6 @@ resource "aws_launch_template" "app_template" {
     security_groups             = [aws_security_group.instance_sg.id]
   }
 
-  # ★ 아래 YOUR_DOCKER_ID를 본인 아이디로 꼭 수정하세요! ★
   user_data = base64encode(<<-EOF
               #!/bin/bash
               yum update -y
