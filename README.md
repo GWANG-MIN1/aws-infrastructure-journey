@@ -16,5 +16,4 @@ AWS 클라우드 인프라 구축의 정석을 밟아가는 학습 여정입니�
 - **목표:** 트래픽 분산(ELB), 자동 확장(Auto Scaling), 배포 자동화(GitHub Actions) 구현
 - **핵심 기술:** ELB, Auto Scaling Group, GitHub Actions CI/CD
 
----
-*Created by [GwangminPark]*
+
