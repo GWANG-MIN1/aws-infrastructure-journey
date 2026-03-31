@@ -135,8 +135,8 @@ aws-infrastructure-journey/
 ├── project1-manual/     # 수동 배포 - 콘솔 설정 스크린샷 및 명령어 정리
 ├── project2-iac/        # Terraform IaC 코드
 ├── project3-cicd/       # GitHub Actions 워크플로우
-├── my-portfolio/        # 포트폴리오 페이지
-└── .github/workflows/   # CI/CD 파이프라인 정의
+├── my-portfolio/        
+└── .github/workflows/   
 ```
 
 ---
@@ -149,7 +149,7 @@ aws-infrastructure-journey/
 # 초기화
 terraform init
 
-# 플랜 확인 (실제 배포 전 변경사항 미리보기)
+# 플랜 확인 
 terraform plan
 
 # 배포
@@ -161,10 +161,3 @@ terraform destroy
 
 ---
 
-## 📈 학습 회고
-
-| 단계 | 핵심 배움 |
-|------|-----------|
-| Project 1 | 네트워크 분리의 중요성. Security Group이 방화벽 역할을 한다는 것을 직접 체감 |
-| Project 2 | "인프라도 코드다." Terraform으로 동일한 환경을 1분 안에 재현할 수 있음을 확인 |
-| Project 3 | 고가용성과 자동화의 차이. 수동 배포 시 발생하는 휴먼에러를 CI/CD가 제거함 |
