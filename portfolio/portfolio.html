@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/usr/share/fonts/truetype/portfolio/NotoSansKR-VF.ttf');
+    font-weight: 100 900; font-style: normal;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('/usr/share/fonts/truetype/portfolio/JetBrainsMono-Regular.ttf');
+    font-weight: 400; font-style: normal;
+  }
+
+  :root {
+    --navy: #1b2735;
+    --navy-soft: #2b3a4d;
+    --orange: #ff9900;
+    --orange-deep: #e07b00;
+    --ink: #222b36;
+    --muted: #5d6b7a;
+    --line: #e2e7ec;
+    --bg-soft: #f5f7f9;
+    --chip: #eef2f6;
+  }
+
+  @page {
+    size: A4;
+    margin: 14mm 13mm 13mm 13mm;
+    @bottom-center {
+      content: "박광민 · Cloud / DevOps Engineer Portfolio";
+      font-family: 'Noto Sans KR'; font-size: 7.5pt; color: #9aa6b2;
+    }
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-family: 'Noto Sans KR'; font-size: 7.5pt; color: #9aa6b2;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--ink);
+    font-size: 9.3pt;
+    line-height: 1.5;
+    -weasy-font-feature-settings: normal;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: linear-gradient(120deg, #1b2735 0%, #243447 55%, #2d4257 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 20px 24px 18px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(255,153,0,0.30), rgba(255,153,0,0));
+  }
+  .hero h1 {
+    font-size: 23pt; font-weight: 700; letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .hero .role {
+    color: var(--orange);
+    font-size: 11pt; font-weight: 500; margin-top: 3px;
+  }
+  .hero .tagline {
+    color: #cdd6df; font-size: 8.8pt; margin-top: 8px; max-width: 78%;
+    line-height: 1.5;
+  }
+  .contact {
+    margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 14px;
+    font-size: 8.4pt; color: #e7edf2;
+  }
+  .contact span { white-space: nowrap; }
+  .contact b { color: var(--orange); font-weight: 500; }
+
+  /* ---------- SECTION ---------- */
+  .section { margin-top: 16px; }
+  .section-title {
+    font-size: 11.5pt; font-weight: 700; color: var(--navy);
+    display: flex; align-items: center; gap: 8px;
+    padding-bottom: 5px; border-bottom: 2px solid var(--orange);
+    margin-bottom: 11px;
+  }
+  .section-title .en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt; color: var(--muted); font-weight: 400;
+    margin-left: auto; letter-spacing: 0.5px;
+  }
+
+  /* ---------- SUMMARY ---------- */
+  .summary {
+    background: var(--bg-soft); border-left: 3px solid var(--orange);
+    border-radius: 0 8px 8px 0; padding: 11px 14px;
+    font-size: 9pt; color: #36424f; line-height: 1.6;
+  }
+  .summary b { color: var(--navy); font-weight: 700; }
+
+  .metrics { display: flex; gap: 10px; margin-top: 11px; }
+  .metric {
+    flex: 1; background: #fff; border: 1px solid var(--line);
+    border-radius: 8px; padding: 9px 8px; text-align: center;
+  }
+  .metric .num { font-size: 15pt; font-weight: 700; color: var(--orange-deep); line-height: 1; }
+  .metric .lbl { font-size: 7.4pt; color: var(--muted); margin-top: 4px; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px;
+  }
+  .skill-row { display: flex; align-items: baseline; gap: 8px; font-size: 8.6pt; }
+  .skill-cat {
+    flex: 0 0 78px; font-weight: 700; color: var(--navy);
+    font-size: 8.3pt;
+  }
+  .skill-val { color: #44505d; line-height: 1.45; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip {
+    background: var(--chip); color: #3a4753;
+    border: 1px solid #dde4ea; border-radius: 20px;
+    padding: 1.5px 8px; font-size: 7.6pt; font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 11px;
+    background: #fff; break-inside: avoid;
+  }
+  .proj-head { display: flex; align-items: flex-start; gap: 8px; }
+  .proj-rank {
+    flex: 0 0 auto;
+    background: var(--navy); color: #fff;
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    font-size: 8pt; border-radius: 6px;
+    width: 20px; height: 20px; text-align: center; line-height: 20px;
+    margin-top: 1px;
+  }
+  .proj-title-wrap { flex: 1; }
+  .proj-title { font-size: 10.5pt; font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .proj-sub { font-size: 7.8pt; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px; }
+  .proj-badge {
+    flex: 0 0 auto; font-size: 7pt; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px; margin-top: 2px;
+    color: #fff; background: var(--orange);
+  }
+  .proj-badge.ai { background: #6b4ce0; }
+  .proj-badge.serverless { background: #2aa775; }
+  .proj-badge.app { background: #2f80ed; }
+
+  .proj-desc { font-size: 8.5pt; color: #43505d; margin: 8px 0 8px 0; line-height: 1.55; }
+  .proj-points { margin: 0 0 9px 0; }
+  .proj-points li {
+    list-style: none; font-size: 8.4pt; color: #3c4854;
+    padding-left: 14px; position: relative; margin-bottom: 3px; line-height: 1.45;
+  }
+  .proj-points li::before {
+    content: "▸"; color: var(--orange); position: absolute; left: 0; font-size: 8pt;
+  }
+  .proj-points b { color: var(--navy-soft); font-weight: 700; }
+  .proj-stack { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 8px; border-top: 1px dashed var(--line); }
+  .proj-stack .chip { background: #fff7ec; border-color: #ffe0b0; color: #a85d00; }
+
+  /* ---------- MINOR PROJECTS ---------- */
+  .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mini {
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 9px 11px; background: var(--bg-soft); break-inside: avoid;
+  }
+  .mini .m-title { font-size: 8.8pt; font-weight: 700; color: var(--navy); }
+  .mini .m-lang {
+    font-family: 'JetBrains Mono', monospace; font-size: 6.8pt;
+    color: #fff; background: var(--muted); border-radius: 4px;
+    padding: 0.5px 5px; margin-left: 5px; vertical-align: middle;
+  }
+  .mini .m-desc { font-size: 7.9pt; color: #4d5a67; margin-top: 4px; line-height: 1.4; }
+
+  /* ---------- APPROACH ---------- */
+  .approach { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9px; }
+  .ap-card {
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 11px;
+    background: #fff;
+  }
+  .ap-card .ap-num { font-family: 'JetBrains Mono', monospace; color: var(--orange); font-weight: 700; font-size: 8pt; }
+  .ap-card .ap-h { font-size: 8.8pt; font-weight: 700; color: var(--navy); margin: 3px 0 4px; }
+  .ap-card .ap-b { font-size: 7.9pt; color: #4d5a67; line-height: 1.45; }
+
+  .footnote {
+    margin-top: 14px; padding-top: 8px; border-top: 1px solid var(--line);
+    font-size: 7.4pt; color: #9aa6b2; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <div class="hero">
+    <h1>박광민 <span style="font-size:12pt; font-weight:400; color:#9fb0c0;">Park Gwang-min</span></h1>
+    <div class="role">Cloud · DevOps · Backend Engineer</div>
+    <div class="tagline">
+      콘솔 수동 배포에서 시작해 <b style="color:#ffd591;">IaC · CI/CD · 서버리스 · AI 에이전트</b>까지,
+      클라우드 인프라가 진화하는 전 과정을 직접 코드로 구축하며 학습합니다.
+    </div>
+    <div class="contact">
+      <span>📧 <b>gwangminions@gmail.com</b></span>
+      <span>🐙 <b>github.com/GWANG-MIN1</b></span>
+      <span>🎓 명지대학교 컴퓨터공학과</span>
+    </div>
+  </div>
+
+  <!-- ===================== SUMMARY ===================== -->
+  <div class="section">
+    <div class="section-title">소개 <span class="en">// SUMMARY</span></div>
+    <div class="summary">
+      AWS 클라우드 인프라를 <b>"콘솔 클릭 → 코드(Terraform/CDK) → 자동화(CI/CD) → 서버리스"</b>의 단계로
+      직접 구축하며, 각 단계의 한계를 다음 단계로 해결하는 방식으로 학습한 엔지니어입니다.
+      단순 따라하기가 아닌 <b>의사결정 근거와 트러블슈팅을 문서화</b>하는 데 집중하며,
+      Terraform 기반 IaC와 GitHub Actions 파이프라인, 그리고 Lambda·Bedrock 기반 서버리스 아키텍처를
+      실제로 배포하고 <b>k6 부하 테스트·CloudWatch 모니터링</b>으로 검증한 경험을 보유하고 있습니다.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="num">18</div><div class="lbl">Public Repositories</div></div>
+      <div class="metric"><div class="num">20+</div><div class="lbl">AWS 서비스 활용</div></div>
+      <div class="metric"><div class="num">6</div><div class="lbl">End-to-End 프로젝트</div></div>
+      <div class="metric"><div class="num">0%</div><div class="lbl">부하테스트 에러율 (6.3K req)</div></div>
+    </div>
+  </div>
+
+  <!-- ===================== SKILLS ===================== -->
+  <div class="section">
+    <div class="section-title">기술 스택 <span class="en">// TECH STACK</span></div>
+    <div class="skills-grid">
+      <div class="skill-row"><div class="skill-cat">Cloud · AWS</div>
+        <div class="skill-val">EC2, VPC, RDS, ALB, Auto Scaling, IAM, S3, CloudFront, ECR</div></div>
+      <div class="skill-row"><div class="skill-cat">Serverless</div>
+        <div class="skill-val">Lambda, DynamoDB, API Gateway, EventBridge, SQS, SNS, Bedrock, IoT Core</div></div>
+      <div class="skill-row"><div class="skill-cat">IaC</div>
+        <div class="skill-val">Terraform, AWS CDK</div></div>
+      <div class="skill-row"><div class="skill-cat">CI / CD</div>
+        <div class="skill-val">GitHub Actions, Docker Hub / ECR, Instance Refresh</div></div>
+      <div class="skill-row"><div class="skill-cat">Container</div>
+        <div class="skill-val">Docker, Docker Compose, multi-stage build</div></div>
+      <div class="skill-row"><div class="skill-cat">Backend</div>
+        <div class="skill-val">FastAPI, Express/Node.js, Flask, Hono</div></div>
+      <div class="skill-row"><div class="skill-cat">Database</div>
+        <div class="skill-val">PostgreSQL, MySQL, Oracle XE, DynamoDB, SQLite</div></div>
+      <div class="skill-row"><div class="skill-cat">Obs · Test</div>
+        <div class="skill-val">CloudWatch, SNS Alarm, k6 부하 테스트, Secrets Manager / KMS</div></div>
+    </div>
+    <div style="margin-top:11px;">
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span>
+        <span class="chip">C++</span><span class="chip">SQL</span><span class="chip">HCL</span><span class="chip">Shell</span>
+        <span class="chip">Node.js 20</span><span class="chip">React / React Native</span><span class="chip">Linux</span>
+        <span class="chip">Kubernetes (학습)</span><span class="chip">WebSocket</span><span class="chip">JWT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== FEATURED PROJECTS ===================== -->
+  <div class="section">
+    <div class="section-title">주요 프로젝트 <span class="en">// FEATURED PROJECTS</span></div>
+
+    <!-- P1 -->
+    <div class="project">
+      <div class="proj-head">
+        <div class="proj-rank">01</div>
+        <div class="proj-title-wrap">
+          <div class="proj-title">AWS Infrastructure Journey</div>
+          <div class="proj-sub">Terraform · ALB · Auto Scaling · GitHub Actions &nbsp;|&nbsp; aws-infrastructure-journey</div>
+        </div>
+        <div class="proj-badge">Infra / IaC</div>
+      </div>
+      <div class="proj-desc">
+        수동 배포 → IaC → CI/CD 자동화로 <b>3단계에 걸쳐 고도화</b>한 AWS 인프라 학습 저장소.
+        각 단계가 이전 단계의 한계(재현 불가 → 단일 EC2 → SPOF)를 해결하도록 설계.
+      </div>
+      <ul class="proj-points">
+        <li><b>Project 1 (수동):</b> VPC/Subnet/RT/IGW 3-Tier 망분리, RDS를 Private Subnet 배치, EC2↔RDS <b>보안그룹 체이닝</b>으로 최소 권한 구현</li>
+        <li><b>Project 2 (IaC):</b> Terraform으로 인프라 코드화, Docker로 환경 표준화, <code>.terraform.lock.hcl</code> 버전 고정으로 재현성 확보</li>
+        <li><b>Project 3 (HA + CI/CD):</b> ALB + ASG(Min 2/Max 4)로 Multi-AZ 고가용성, GitHub Actions → Docker Hub → <b>Instance Refresh 무중단 롤링 배포</b></li>
+      </ul>
+      <div class="proj-stack">
+        <span class="chip">Terraform</span><span class="chip">VPC/Subnet</span><span class="chip">ALB</span>
+        <span class="chip">Auto Scaling</span><span class="chip">RDS MySQL</span><span class="chip">Docker</span>
+        <span class="chip">GitHub Actions</span><span class="chip">Instance Refresh</span>
+      </div>
+    </div>
+
+    <!-- P2 -->
+    <div class="project">
+      <div class="proj-head">
+        <div class="proj-rank">02</div>
+        <div class="proj-title-wrap">
+          <div class="proj-title">Gym Management Backend</div>
+          <div class="proj-sub">PostgreSQL · FastAPI · AWS · Terraform &nbsp;|&nbsp; gym-management-db</div>
+        </div>
+        <div class="proj-badge app">Full Backend</div>
+      </div>
+      <div class="proj-desc">
+        피트니스 센터 운영 백엔드. 로컬 <b>Oracle XE → PostgreSQL 마이그레이션</b>부터
+        컨테이너화 · 자동 배포 · 보안 · 모니터링 · 부하 테스트까지 단계적으로 구축한 풀스택 프로젝트.
+      </div>
+      <ul class="proj-points">
+        <li><b>CD 파이프라인:</b> 코드 push → GitHub Actions → Docker 빌드 → <b>ECR push → EC2 SSH 배포 → /health 헬스체크</b> (4종 워크플로우: lint·schema-test·terraform·cd)</li>
+        <li><b>보안:</b> DB 비밀번호를 코드/환경변수에서 제거하고 <b>AWS Secrets Manager + IAM Role</b>로 런타임 자동 로드 (boto3), KMS 암호화</li>
+        <li><b>모니터링:</b> CloudWatch 대시보드 + SNS 이메일 알람 (RDS CPU 80% / 커넥션 20 / 지연 100ms 임계값)</li>
+        <li><b>부하 테스트:</b> k6 VU 10→50 단계 증가, <b>총 6,354건 / 30.2 req/s / 에러율 0%</b>, 읽기 병목 분석 후 Read Replica·페이지네이션 개선안 도출</li>
+      </ul>
+      <div class="proj-stack">
+        <span class="chip">FastAPI</span><span class="chip">PostgreSQL 15</span><span class="chip">SQLAlchemy</span>
+        <span class="chip">Terraform</span><span class="chip">ECR/EC2</span><span class="chip">Secrets Manager</span>
+        <span class="chip">CloudWatch</span><span class="chip">KMS</span><span class="chip">k6</span><span class="chip">Docker Compose</span>
+      </div>
+    </div>
+
+    <!-- P3 -->
+    <div class="project">
+      <div class="proj-head">
+        <div class="proj-rank">03</div>
+        <div class="proj-title-wrap">
+          <div class="proj-title">Serverless Uptime Monitor</div>
+          <div class="proj-sub">Lambda · EventBridge · SQS · DynamoDB · SNS &nbsp;|&nbsp; serverless-uptime-monitor</div>
+        </div>
+        <div class="proj-badge serverless">Serverless</div>
+      </div>
+      <div class="proj-desc">
+        <b>EC2 없이 순수 서버리스</b>로 구현한 업타임 모니터링 SaaS. 엔드포인트를 등록하면
+        1분 주기로 헬스체크하고, 장애 감지 시 큐 기반으로 Slack·이메일 알림을 자동 발송.
+      </div>
+      <ul class="proj-points">
+        <li><b>이벤트 드리븐:</b> EventBridge(1분 스케줄) → Lambda 헬스체크 → <b>SQS + DLQ</b> → 알림 Lambda → SNS/Slack Webhook</li>
+        <li><b>중복 알림 방지:</b> UP→DOWN <b>상태 전환 시에만</b> 발송, DynamoDB <b>TTL 30일</b> 자동 만료, 매월 1일 전월 업타임% 리포트를 S3에 저장</li>
+        <li>REST API(API Gateway HTTP API) 5종으로 엔드포인트 CRUD + 헬스체크 이력 조회 제공</li>
+      </ul>
+      <div class="proj-stack">
+        <span class="chip">Lambda (Py3.12)</span><span class="chip">EventBridge</span><span class="chip">SQS + DLQ</span>
+        <span class="chip">DynamoDB TTL</span><span class="chip">API Gateway</span><span class="chip">SNS / Slack</span>
+        <span class="chip">S3</span><span class="chip">Terraform</span>
+      </div>
+    </div>
+
+    <!-- P4 -->
+    <div class="project">
+      <div class="proj-head">
+        <div class="proj-rank">04</div>
+        <div class="proj-title-wrap">
+          <div class="proj-title">AWS Serverless AI Agent</div>
+          <div class="proj-sub">AWS CDK · TypeScript · Bedrock · Lambda@Edge &nbsp;|&nbsp; aws-serverless-agent</div>
+        </div>
+        <div class="proj-badge ai">AI / Serverless</div>
+      </div>
+      <div class="proj-desc">
+        AWS Summit 레퍼런스를 <b>부품 → MVP 조립 → 고급 패턴</b> 3단계로 분해해 직접 재구현하는
+        서버리스 AI 에이전트. CDK(IaC)로 모든 인프라를 코드 관리.
+      </div>
+      <ul class="proj-points">
+        <li><b>MVP 챗봇:</b> Lambda + DynamoDB + <b>Bedrock(Claude Haiku 4.5)</b> 통합, Function URL <b>응답 스트리밍</b>, Hono 멀티 라우트 + 히스토리 API</li>
+        <li><b>프론트 통합:</b> Vite React + S3 정적 호스팅 + <b>CloudFront(OAC) + /api/* → Function URL rewrite</b></li>
+        <li><b>고급 패턴:</b> API↔Worker Lambda 비동기 분리(async invoke), DynamoDB 멀티 테이블, (진행) Agent Loop·IoT MQTT·Lambda@Edge + SSM 캐싱</li>
+      </ul>
+      <div class="proj-stack">
+        <span class="chip">AWS CDK v2</span><span class="chip">TypeScript</span><span class="chip">Bedrock</span>
+        <span class="chip">Lambda@Edge</span><span class="chip">DynamoDB</span><span class="chip">CloudFront</span>
+        <span class="chip">IoT Core MQTT</span><span class="chip">Hono</span>
+      </div>
+    </div>
+
+    <!-- P5 -->
+    <div class="project">
+      <div class="proj-head">
+        <div class="proj-rank">05</div>
+        <div class="proj-title-wrap">
+          <div class="proj-title">Let's Eat — 밥친구 매칭 앱 리팩토링</div>
+          <div class="proj-sub">React Native · Express · WebSocket · Docker CI/CD &nbsp;|&nbsp; Lets-Eat-refactor</div>
+        </div>
+        <div class="proj-badge app">App / DevOps</div>
+      </div>
+      <div class="proj-desc">
+        팀 프로젝트로 만든 React Native 매칭 앱에 <b>컨테이너화 + 자동 배포 파이프라인</b>을 더한 리팩토링.
+        실시간 채팅(WebSocket), JWT 인증, 평점 시스템을 갖춘 풀스택 앱.
+      </div>
+      <ul class="proj-points">
+        <li>Express + WebSocket 백엔드를 <b>Docker multi-stage build</b>로 컨테이너화, ci.yml(테스트·빌드) / deploy.yml(ECR→EC2 SSH) 2단 파이프라인</li>
+        <li>JWT + bcrypt 인증, 방 생성/참여/채팅/평점 등 <b>14개 REST 엔드포인트</b> + 헬스체크</li>
+      </ul>
+      <div class="proj-stack">
+        <span class="chip">React Native</span><span class="chip">Express</span><span class="chip">WebSocket</span>
+        <span class="chip">JWT</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">ECR/EC2</span>
+      </div>
+    </div>
+
+    <!-- P6 -->
+    <div class="project">
+      <div class="proj-head">
+        <div class="proj-rank">06</div>
+        <div class="proj-title-wrap">
+          <div class="proj-title">DAYNEW — 개인 맞춤 뉴스 서비스</div>
+          <div class="proj-sub">Python Flask · NewsAPI · GNews &nbsp;|&nbsp; Vibecoding_1</div>
+        </div>
+        <div class="proj-badge app">Web App</div>
+      </div>
+      <div class="proj-desc">
+        관심사·키워드 기반으로 다중 뉴스 소스에서 최대 50건을 수집·중복 제거해 제공하는 맞춤 뉴스 웹 서비스.
+        Flask REST API + Vanilla JS 반응형 프론트.
+      </div>
+      <div class="proj-stack">
+        <span class="chip">Flask</span><span class="chip">NewsAPI</span><span class="chip">GNews</span>
+        <span class="chip">JavaScript</span><span class="chip">반응형 UI</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== LEARNING / FOUNDATIONS ===================== -->
+  <div class="section">
+    <div class="section-title">기초 · 학습 저장소 <span class="en">// FOUNDATIONS & LEARNING</span></div>
+    <div class="mini-grid">
+      <div class="mini">
+        <div class="m-title">infra-lab <span class="m-lang">DevOps</span></div>
+        <div class="m-desc">DevOps 학습 랩 — Linux 스크립트, Docker, Kubernetes 매니페스트, 트러블슈팅 로그 정리</div>
+      </div>
+      <div class="mini">
+        <div class="m-title">cloud-engineer-fundamentals <span class="m-lang">Shell</span></div>
+        <div class="m-desc">클라우드 엔지니어 기초 — 리눅스/셸 스크립팅 중심의 인프라 기본기 학습</div>
+      </div>
+      <div class="mini">
+        <div class="m-title">OOP-in-CPP <span class="m-lang">C++</span></div>
+        <div class="m-desc">C++ 객체지향 프로그래밍 14개 챕터 — 포인터/상속/다형성/템플릿까지 체계적 정리</div>
+      </div>
+      <div class="mini">
+        <div class="m-title">Coding-Test &middot; Algorithm <span class="m-lang">Python</span></div>
+        <div class="m-desc">코딩 테스트 및 알고리즘 문제 풀이 — 자료구조·알고리즘 기본기</div>
+      </div>
+      <div class="mini">
+        <div class="m-title">Nanobanana_and_veo3 <span class="m-lang">DL</span></div>
+        <div class="m-desc">딥러닝 과제 — 생성형 모델 기반 이미지/영상 생성 (이미지 편집·모션 생성 실습)</div>
+      </div>
+      <div class="mini">
+        <div class="m-title">Generate_background <span class="m-lang">Python</span></div>
+        <div class="m-desc">Python 자동화 토이 프로젝트 — 배경화면 생성 스크립트</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== APPROACH ===================== -->
+  <div class="section">
+    <div class="section-title">일하는 방식 <span class="en">// HOW I WORK</span></div>
+    <div class="approach">
+      <div class="ap-card">
+        <div class="ap-num">01</div>
+        <div class="ap-h">한계 → 해결로 설계</div>
+        <div class="ap-b">"왜 이 단계가 필요한가"를 이전 단계의 한계(재현 불가, SPOF 등)에서 출발해 결정합니다.</div>
+      </div>
+      <div class="ap-card">
+        <div class="ap-num">02</div>
+        <div class="ap-h">의사결정·트러블슈팅 기록</div>
+        <div class="ap-b">Terraform vs CloudFormation, Function URL 노선 변경 등 선택의 근거와 막힌 지점을 문서로 남깁니다.</div>
+      </div>
+      <div class="ap-card">
+        <div class="ap-num">03</div>
+        <div class="ap-h">측정으로 검증</div>
+        <div class="ap-b">k6 부하 테스트, CloudWatch 알람, 헬스체크로 "동작한다"를 수치로 확인하고 병목을 개선합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    본 포트폴리오는 GitHub 공개 저장소(github.com/GWANG-MIN1) 18개를 분석하여 작성되었습니다 · 2026.06
+  </div>
+
+</body>
+</html>
