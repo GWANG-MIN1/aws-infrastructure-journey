@@ -264,12 +264,3 @@ GitHub 저장소 **Settings → Secrets** 에 등록 필요:
 5. **Health Check Grace Period** — 배포 직후 503 에러의 원인. 컨테이너 부팅 시간을 인프라가 알아야 한다는 것. ([Project 3 트러블슈팅](./project3-cicd/README.md#-이슈-2-배포-직후-502503-에러))
 
 ---
-
-## 🔮 다음 단계 (Backlog)
-
-- [ ] Terraform 코드 모듈 분리 (`vpc.tf`, `ec2.tf`, `security.tf`)
-- [ ] Remote State (S3 + DynamoDB Lock) 도입
-- [ ] HTTPS (ACM + ALB Listener 443) 적용
-- [ ] CloudWatch 알람 + SNS 알림 연동
-- [ ] RDS Multi-AZ 전환 및 읽기 전용 복제본 추가
-- [ ] Blue/Green 배포 (CodeDeploy) 비교 실습
